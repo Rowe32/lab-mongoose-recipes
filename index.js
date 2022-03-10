@@ -36,17 +36,19 @@ mongoose
     // Itaretion 4
 
     return Recipe.insertMany(data);
-
   })
-//   .then(() => {
-//     return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese" }, {duration: 100}, () => {
-//       console.log("Recipe was updated!");
-// //Error connecting to the database MongooseError: Query was already executed: Recipe.findOneAndUpdate({ title: 'Rigatoni alla Genovese' },...
-//     });
-//   })
+  //   .then(() => {
+  //     return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese" }, {duration: 100}, () => {
+  //       console.log("Recipe was updated!");
+  //     });
+  //   })
   .then(() => {
-    return Recipe.deleteOne({title: "Carrot Cake" }, () => {console.log("Recipe was deleted!")})
+    return Recipe.deleteOne({ title: "Carrot Cake" }, {});
   })
+  .then(() => console.log("deletion done"))
   .catch((error) => {
     console.error("Error connecting to the database", error);
+  })
+  .finally(() => {
+    return mongoose.connection.close().then(() => console.log("disconnected"));
   });
