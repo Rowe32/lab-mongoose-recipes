@@ -11,12 +11,23 @@ const MONGODB_URI = 'mongodb://localhost:27017/recipe-app';
 mongoose
   .connect(MONGODB_URI)
   .then(x => {
-    console.log(`Connected to the database: "${x.connection.name}"`);
+    // console.log(`Connected to the database: "${x.connection.name}"`);
     // Before adding any recipes to the database, let's remove all existing ones
     return Recipe.deleteMany()
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    
+    // Iteration 2
+
+    // const chickenDish = Recipe.create(data[0]);
+    // chickenDish.then((value)=> {
+    //   return value;
+    // });
+
+    // Iteration 3
+    // Recipe.create(data[0]);
+  
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
