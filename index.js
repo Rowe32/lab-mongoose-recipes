@@ -26,8 +26,13 @@ mongoose
     // });
 
     // Iteration 3
-    // Recipe.create(data[0]);
-  
+    const allRecipes = Recipe.insertMany(data);
+    allRecipes.then((value) => {
+      for (let i= 0; i < value.length; i++) {
+        console.log(value[i].title);
+      };
+    });
+
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
